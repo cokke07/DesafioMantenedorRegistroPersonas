@@ -49,22 +49,22 @@ public class Persona {
 	private String apellidoMaterno;
 	
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@Column(name="fecha_nacimiento")
 	private Date fechaNacimiento;
 	
 	@Column(name= "calle")
 	private String direccionCalle;
 	
-	@Enumerated(EnumType.ORDINAL)
-	private Comuna direccionComuna;
+	//@Enumerated(EnumType.ORDINAL)
+	//private Comuna direccionComuna;
 	
 	@Enumerated(EnumType.ORDINAL)
 	private Region direccionRegion;
-	
+	/*
 	@Enumerated(EnumType.ORDINAL)
 	private Sexo sexo;
-	
+	*/
 	@Column(name= "email")
 	private String email;
 	
