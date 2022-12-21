@@ -20,4 +20,10 @@ public class PersonaServiceImp implements PersonaService {
 		return pr.findAll();
 	}
 
+	@Override
+	public Persona agregarPersona(Persona p) {
+		// TODO Auto-generated method stub
+		return pr.save(p);
+	}
+
 }
