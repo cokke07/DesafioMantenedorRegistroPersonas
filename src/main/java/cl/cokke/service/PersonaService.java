@@ -11,4 +11,5 @@ public interface PersonaService {
 	public List<Persona> buscarTotdos();
 	public Persona agregarPersona(Persona p);
 	public HttpStatus eliminarPersonas();
+	public HttpStatus eliminarPersona(Long id);
 }

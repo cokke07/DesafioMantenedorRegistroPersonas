@@ -33,4 +33,15 @@ public class PersonaServiceImp implements PersonaService {
 		return HttpStatus.OK;
 	}
 
+	@Override
+	public HttpStatus eliminarPersona(Long id) {
+		
+		if(pr.findById(id).isPresent()) {
+			pr.deleteById(id);
+			return HttpStatus.OK;
+		}else {
+			return HttpStatus.NOT_FOUND;
+		}
+	}
+
 }
