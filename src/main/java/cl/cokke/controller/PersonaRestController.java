@@ -1,6 +1,7 @@
 package cl.cokke.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.websocket.server.PathParam;
 
@@ -47,4 +48,17 @@ public class PersonaRestController {
 	public ResponseEntity<HttpStatus> eliminarPersonaPorId(@PathVariable("id") Long id){
 		return new ResponseEntity<>(ps.eliminarPersona(id),HttpStatus.OK);
 	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Persona> buscarPersonaPorId(@PathVariable("id") Long id){
+		
+		Optional<Persona> personaEncontrada = ps.buscarPorId(id);
+		
+		if(personaEncontrada.isPresent()) {
+			return new ResponseEntity<>(personaEncontrada.get(),HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+		}
+	}
+	
 }
