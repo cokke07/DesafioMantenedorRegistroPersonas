@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,4 +34,9 @@ public class PersonaRestController {
 		return new ResponseEntity<>(ps.agregarPersona(p),HttpStatus.CREATED);
 	}
 	
+	@DeleteMapping("/delleteAll")
+	public ResponseEntity<HttpStatus> eliminarTotalRegistros(){
+		
+		return new ResponseEntity<>(ps.eliminarPersonas(),HttpStatus.OK);
+	}
 }
