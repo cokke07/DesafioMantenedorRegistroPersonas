@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -61,4 +62,24 @@ public class PersonaRestController {
 		}
 	}
 	
+	@PutMapping("/{id}")
+	public ResponseEntity<Persona> actualizarPersona(@PathVariable("id") Long id, @RequestBody Persona p){
+		Optional<Persona> personaEncontrada = ps.buscarPorId(id);
+		
+		if(personaEncontrada.isPresent()) {
+			
+			personaEncontrada.get().setNombres(p.getNombres());
+			personaEncontrada.get().setApellidoPaterno(p.getApellidoPaterno());
+			personaEncontrada.get().setApellidoMaterno(p.getApellidoMaterno());
+			personaEncontrada.get().setFechaNacimiento(p.getFechaNacimiento());
+			personaEncontrada.get().setEmail(p.getEmail());
+			personaEncontrada.get().setDireccionCalle(p.getDireccionCalle());
+			personaEncontrada.get().setDireccionRegion(p.getDireccionRegion());
+			personaEncontrada.get().setFechaNacimiento(p.getFechaNacimiento());
+						
+			return new ResponseEntity<>(ps.actualizarPersona(personaEncontrada.get()),HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+		}
+	}
 }

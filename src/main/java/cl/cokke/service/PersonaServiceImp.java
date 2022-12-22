@@ -51,4 +51,10 @@ public class PersonaServiceImp implements PersonaService {
 		return pr.findById(id);
 	}
 
+	@Override
+	public Persona actualizarPersona(Persona p) {
+		
+		return pr.save(p);
+	}
+
 }
