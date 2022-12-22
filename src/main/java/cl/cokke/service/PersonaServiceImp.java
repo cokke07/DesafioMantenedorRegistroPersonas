@@ -1,6 +1,7 @@
 package cl.cokke.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,6 +43,12 @@ public class PersonaServiceImp implements PersonaService {
 		}else {
 			return HttpStatus.NOT_FOUND;
 		}
+	}
+
+	@Override
+	public Optional<Persona> buscarPorId(Long id) {
+		
+		return pr.findById(id);
 	}
 
 }
